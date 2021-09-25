@@ -4,6 +4,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{C96D73
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoTutorial", "Blazor\TodoTutorial\TodoTutorial.csproj", "{A7776337-9C8D-4E2D-83BF-4BE349CFC67F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BakeryStore", "Blazor\BakeryStore\BakeryStore.csproj", "{EAA2FC3E-420E-462E-8F93-D09BE34EAE22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,8 +16,13 @@ Global
 		{A7776337-9C8D-4E2D-83BF-4BE349CFC67F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7776337-9C8D-4E2D-83BF-4BE349CFC67F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7776337-9C8D-4E2D-83BF-4BE349CFC67F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAA2FC3E-420E-462E-8F93-D09BE34EAE22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAA2FC3E-420E-462E-8F93-D09BE34EAE22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAA2FC3E-420E-462E-8F93-D09BE34EAE22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAA2FC3E-420E-462E-8F93-D09BE34EAE22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A7776337-9C8D-4E2D-83BF-4BE349CFC67F} = {C96D73F8-0437-4B42-8257-F4676F49DACC}
+		{EAA2FC3E-420E-462E-8F93-D09BE34EAE22} = {C96D73F8-0437-4B42-8257-F4676F49DACC}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\Images\bkg.png" />
+      <None Include="wwwroot\Images\brand.png" />
+      <None Include="wwwroot\Images\Products\bread.jpg" />
+      <None Include="wwwroot\Images\Products\carrot_cake.jpg" />
+      <None Include="wwwroot\Images\Products\chocolate_cake.jpg" />
+      <None Include="wwwroot\Images\Products\cupcakes.jpg" />
+      <None Include="wwwroot\Images\Products\lemon_tart.jpg" />
+      <None Include="wwwroot\Images\Products\pear_tart.jpg" />
+      <None Include="wwwroot\Images\Products\Thumbnails\bread.jpg" />
+      <None Include="wwwroot\Images\Products\Thumbnails\carrot_cake.jpg" />
+      <None Include="wwwroot\Images\Products\Thumbnails\chocolate_cake.jpg" />
+      <None Include="wwwroot\Images\Products\Thumbnails\cupcakes.jpg" />
+      <None Include="wwwroot\Images\Products\Thumbnails\lemon_tart.jpg" />
+      <None Include="wwwroot\Images\Products\Thumbnails\pear_tart.jpg" />
+    </ItemGroup>
+
+</Project>

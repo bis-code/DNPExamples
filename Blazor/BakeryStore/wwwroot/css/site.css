@@ -1,0 +1,156 @@
+@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+
+html, body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+a, .btn-link {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.content {
+    padding-top: 1.1rem;
+}
+
+.valid.modified:not([type=checkbox]) {
+    outline: 1px solid #26b050;
+}
+
+.invalid {
+    outline: 1px solid red;
+}
+
+.validation-message {
+    color: red;
+}
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}
+
+.navbar-nav {
+    justify-content: flex-end;
+}
+
+body {
+    color: #696969;
+}
+
+a:link {
+    color: #3b3420;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #3b3420;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #a52f09;
+    text-decoration: none;
+}
+
+a:active {
+    color: #a52f09;
+}
+
+a{
+    color: #fdfcf7;
+}
+.productInfo, .action {
+    max-width: 200px;
+}
+
+p {
+    font-size: 0.8rem;
+}
+
+#orderProcess {
+    list-style: none;
+    padding: 0;
+    clear: both;
+}
+
+#orderProcess li {
+    color: #696969;
+    display: inline;
+    font-size: 1.2em;
+    margin-right: 15px;
+    padding: 3px 0px 0px 5px;
+}
+
+.step-number {
+    background-color: #edece8;
+    border: 1px solid #e6e4d9;
+    font-size: 1.5em;
+    margin-right: 5px;
+    padding: 3px 10px;
+}
+
+.current .step-number {
+    background-color: #a52f09;
+    border-color: #712107;
+    color: #fefefe;
+}
+
+.orderPageList {
+    padding-inline-start: 20px;
+}
+
+.actions .order-button {
+    margin-left: 20px;
+}
+
+label[for="OrderQuantity"] {
+    padding-left: 15px;
+}
+
+#OrderQuantity {
+    margin: 0 15px;
+    max-width: 100px;
+}
+
+.order-calc {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.input-validation-error, .input-validation-error:focus {
+    background: #ffccba;
+    color: #d63301;
+}
+
+.form-control.input-validation-error:focus {
+    border-color: #d63301;
+    box-shadow: 0 0 0 0.2rem rgba(255, 123, 123, 0.5);
+}
+
+.field-validation-error {
+    color: #be3e16;
+}
+
+.validation-summary-errors {
+    color: #be3e16;
+}

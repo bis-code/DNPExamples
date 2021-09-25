@@ -28,8 +28,7 @@ else
     </EditForm>
 }
 @code {
-    [Parameter] /* We add [Parameter] attribute to indicate this property
-    can be set from the outside. In this case from the path */
+    [Parameter]
     public int Id { get; set; }
 
     private Todo toDoToEdit;
