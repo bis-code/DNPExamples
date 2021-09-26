@@ -6,6 +6,6 @@ namespace BakeryStore.Data
 {
     public interface IProductsService
     {
-        public IList<Product> Products { get; }
+        public IList<Product> Products { get; set; }
     }
 }
