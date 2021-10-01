@@ -1,0 +1,23 @@
+﻿@page "/Security"
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<AuthorizeView>
+    <h3>Hello @context.User.Identity.Name</h3>
+    
+    <h5>Your security level is @context.User.FindFirst(claim => claim.Type.Equals("Level")).Value</h5> 
+    <!-- Getting user object, available inside AuthorizeView -->>
+    <!-- Context is available inside AuthorizeView -->
+</AuthorizeView>
+
+<p>This piece of text is visibile for level 8 and above</p>
+
+<AuthorizeView Policy="SecurityLevel2">
+    <p>This piece of text is visible for level 2 and above</p>
+</AuthorizeView>
+
+<AuthorizeView Policy="SecurityLevel4"> <!-- Showing parts of page, based on policies -->
+    <p>This is visible for level 4 and above</p>
+</AuthorizeView>
+@code {
+
+}

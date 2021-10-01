@@ -1,0 +1,70 @@
+﻿@page "/Login"
+
+@namespace LoginComponent 
+@using Login_First_Exercise.Authentication
+@using Microsoft.AspNetCore.Components
+@using System.Threading.Tasks
+@using Microsoft.AspNetCore.Mvc.Diagnostics
+@using System.Diagnostics
+
+
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager 
+
+<AuthorizeView>
+    <NotAuthorized> <!-- Rendered if no authorized user -->
+        <div class="form-group">
+            <label>User name:</label>
+            <input type="text" placeholder="user name" @bind-value="username"/>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" placeholder="password" @bind-value="password"/>
+        </div>
+        <div style="color:red">@errorMessage</div> <!-- Error msg -->
+        
+        <a href="" @onclick="PerformLogin"> Login</a>
+        
+    </NotAuthorized>
+    <Authorized> <!-- Rendered if authorized user -->
+        <a href="" @onclick="PerformLogout">
+            Log out
+        </a>
+    </Authorized>
+</AuthorizeView>
+@code {
+    private string username;
+    private string password;
+    private string errorMessage;
+
+    //Called when clicking log in
+    public async Task PerformLogin()
+    {
+        errorMessage = "";
+        try
+        {
+            ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(username, password);
+            username = "";
+            password = "";
+            NavigationManager.NavigateTo("/");
+        }
+        catch (Exception e)
+        {
+            errorMessage = e.Message;
+        }
+    }
+ 
+    //Called when clicking log out
+    public async Task PerformLogout()
+    {
+        errorMessage = "";
+        username = "";
+        password = "";
+        try
+        {
+            ((CustomAuthenticationStateProvider) AuthenticationStateProvider).Logout();
+            NavigationManager.NavigateTo("/");
+        }
+        catch (Exception e) {}
+    }
+}

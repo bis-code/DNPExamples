@@ -1,6 +1,6 @@
-﻿using WebApplication2.Model;
+﻿using Login_First_Exercise.Model;
 
-namespace WebApplication2.Data
+namespace Login_First_Exercise.Data
 {
     public interface IUserService
     {

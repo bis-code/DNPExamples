@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using Login_First_Exercise
 @namespace Login_First_Exercise.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
@@ -10,14 +11,14 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <tLogin First Exerciset Exercise</title>
+    <Login First Exerciset Exercise</title>
     <base href="~/"/>
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css"/>
     <link href="css/site.css" rel="stylesheet"/>
     <link href="Login First Exercise.styles.css" rel="stylesheet"/>
 </head>
 <body>
-<component type="typeof(App)" render-mode="ServerPrerendered"/>
+<component type="typeof(App)" render-mode="Server"/> 
 
 <div id="blazor-error-ui">
     <environment include="Staging,Production">

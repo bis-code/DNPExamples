@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using WebApplication2.Model;
+using Login_First_Exercise.Model;
 
-namespace WebApplication2.Data.Impl
+namespace Login_First_Exercise.Data.Impl
 {
     public class InMomeryUserService : IUserService
     {

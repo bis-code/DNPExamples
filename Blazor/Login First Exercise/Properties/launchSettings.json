@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "WebApplication2": {
+    "Login-First-Exercise": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

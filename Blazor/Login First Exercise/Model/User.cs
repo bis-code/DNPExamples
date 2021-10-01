@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 
-namespace WebApplication2.Model
+namespace Login_First_Exercise.Model
 {
     public class User
     {

@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Security.Claims;
-using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Channels;
 using System.Threading.Tasks;
+using Login_First_Exercise.Data;
+using Login_First_Exercise.Model;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
-using Microsoft.VisualBasic;
-using WebApplication2.Model;
 
-namespace WebApplication2.Data
+namespace Login_First_Exercise.Authentication
 {
     public class CustomAuthenticationStateProvider : AuthenticationStateProvider
     {

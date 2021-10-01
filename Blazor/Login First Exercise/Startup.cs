@@ -2,7 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Login_First_Exercise.Authentication;
+using Login_First_Exercise.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -10,10 +13,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WebApplication2.Data;
-using WebApplication2.Data.Impl;
+using Login_First_Exercise.Data.Impl;
 
-namespace WebApplication2
+namespace Login_First_Exercise
 {
     public class Startup
     {
@@ -30,9 +32,25 @@ namespace WebApplication2
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
             services.AddScoped<IUserService, InMomeryUserService>(); //added for log in
-            services.AddScoped<CustomAuthenticationStateProvider, CustomAuthenticationStateProvider>(); //added for log in 
+            services.AddScoped<CustomAuthenticationStateProvider, CustomAuthenticationStateProvider>(); //added for log in
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("MustBeVIA", a => a.RequireAuthenticatedUser().RequireClaim("Domain", "via.dk"));
+
+                options.AddPolicy("SecurityLevel4",
+                    a => a.RequireAuthenticatedUser().RequireClaim("Level", "4", "5")); //4 and 5 = valid values
+
+                options.AddPolicy("MustBeTeacher", a => a.RequireAuthenticatedUser().RequireClaim("Role", "Teacher"));
+
+                options.AddPolicy("SecurityLevel2", a => a.RequireAuthenticatedUser().RequireAssertion(context =>
+                {
+                    Claim levelClaim = context.User.FindFirst(claim => claim.Type.Equals("Level"));
+                    if (levelClaim == null) return false;
+                    return int.Parse(levelClaim.Value) >= 2; //valid condition
+                }));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
