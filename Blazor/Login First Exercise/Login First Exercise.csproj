@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-        <RootNamespace>AdvancedTools</RootNamespace>
+        <RootNamespace>WebApplication2</RootNamespace>
     </PropertyGroup>
 
 </Project>

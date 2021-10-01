@@ -1,6 +1,6 @@
 using System;
 
-namespace AdvancedTools.Data
+namespace WebApplication2.Data
 {
     public class WeatherForecast
     {

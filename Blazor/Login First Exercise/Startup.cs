@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
@@ -9,9 +10,10 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using AdvancedTools.Data;
+using WebApplication2.Data;
+using WebApplication2.Data.Impl;
 
-namespace AdvancedTools
+namespace WebApplication2
 {
     public class Startup
     {
@@ -29,7 +31,8 @@ namespace AdvancedTools
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
-            services.AddSingleton<ITodosData,TodoJSONDAta>();
+            services.AddScoped<IUserService, InMomeryUserService>(); //added for log in
+            services.AddScoped<CustomAuthenticationStateProvider, CustomAuthenticationStateProvider>(); //added for log in 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

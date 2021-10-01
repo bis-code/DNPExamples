@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoTutorial", "Blazor\Todo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BakeryStore", "Blazor\BakeryStore\BakeryStore.csproj", "{EAA2FC3E-420E-462E-8F93-D09BE34EAE22}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Login First Exercise", "Blazor\Login First Exercise\Login First Exercise.csproj", "{73831BF6-7A3E-4EC7-AA53-51BC1925A4BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +22,14 @@ Global
 		{EAA2FC3E-420E-462E-8F93-D09BE34EAE22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAA2FC3E-420E-462E-8F93-D09BE34EAE22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAA2FC3E-420E-462E-8F93-D09BE34EAE22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73831BF6-7A3E-4EC7-AA53-51BC1925A4BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73831BF6-7A3E-4EC7-AA53-51BC1925A4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73831BF6-7A3E-4EC7-AA53-51BC1925A4BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73831BF6-7A3E-4EC7-AA53-51BC1925A4BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A7776337-9C8D-4E2D-83BF-4BE349CFC67F} = {C96D73F8-0437-4B42-8257-F4676F49DACC}
 		{EAA2FC3E-420E-462E-8F93-D09BE34EAE22} = {C96D73F8-0437-4B42-8257-F4676F49DACC}
+		{73831BF6-7A3E-4EC7-AA53-51BC1925A4BD} = {C96D73F8-0437-4B42-8257-F4676F49DACC}
 	EndGlobalSection
 EndGlobal
