@@ -14,7 +14,7 @@ namespace BakeryStore.Data
         public IList<Product> Products
         {
             get;
-            private set;
+            set;
         }
 
         private string productsFile = "Products.json";

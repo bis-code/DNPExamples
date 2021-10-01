@@ -17,7 +17,6 @@ namespace TodoWithLogin.Data
         {
             if (!File.Exists(todoFile))
             {
-                Seed();
                 WriteTodosToFile();
             }
             else
@@ -25,70 +24,6 @@ namespace TodoWithLogin.Data
                 string content = File.ReadAllText(todoFile);
                 todos = JsonSerializer.Deserialize<List<Todo>>(content);
             }
-        }
-
-        private void Seed()
-        {
-            Todo[] ts =
-            {
-                new Todo
-                {
-                    UserId = 1,
-                    TodoId = 1,
-                    Title = "Do wishes",
-                    IsCompleted = false
-                },
-                new Todo
-                {
-                    UserId = 1,
-                    TodoId = 2,
-                    Title = "Walk the dog",
-                    IsCompleted = false
-                },
-                new Todo
-                {
-                    UserId = 2,
-                    TodoId = 3,
-                    Title = "Do DNP homework",
-                    IsCompleted = true
-                },
-                new Todo
-                {
-                    UserId = 3,
-                    TodoId = 4,
-                    Title = "Eat breakfast",
-                    IsCompleted = false
-                },
-                new Todo
-                {
-                    UserId = 4,
-                    TodoId = 5,
-                    Title = "Mow lawn",
-                    IsCompleted = true
-                },
-                new Todo
-                {
-                    UserId = 4, 
-                    TodoId = 6,
-                    Title = "Do games",
-                    IsCompleted = false
-                },
-                new Todo
-                {
-                    UserId = 1,
-                    TodoId = 7,
-                    Title = "Play with cat",
-                    IsCompleted = true
-                },
-                new Todo
-                {
-                    UserId = 4,
-                    TodoId = 8,
-                    Title = "Love iubita",
-                    IsCompleted = true
-                },
-            };
-            todos = ts.ToList();
         }
 
         public IList<Todo> GetTodos()
