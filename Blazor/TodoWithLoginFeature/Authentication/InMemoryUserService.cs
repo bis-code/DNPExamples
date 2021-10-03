@@ -14,8 +14,39 @@ namespace TodoWithLoginFeature.Authentication
 
         public InMemoryUserService()
         {
-            string content = File.ReadAllText(usersFile);
-            users = JsonSerializer.Deserialize<List<User>>(content);
+            if (!File.Exists(usersFile))
+            {
+                users = users = new[]
+                {
+                    new User()
+                    {
+                        Username = "Ionut",
+                        UserID = 1,
+                        Password = "12345",
+                        City = "Ploiesti",
+                        SecurityLevel = 4,
+                        Role = "Admin",
+                        Birthday = 2001
+                    },
+                    new User()
+                    {
+                        Username = "Baicoianu",
+                        UserID = 2,
+                        Password = "12345",
+                        City = "Horsens",
+                        SecurityLevel = 2,
+                        Role = "Member",
+                        Birthday = 2005
+                    }
+                }.ToList();
+                string userAsJson = JsonSerializer.Serialize(users);
+                File.WriteAllText(usersFile, userAsJson);
+            }
+            else
+            {
+                string content = File.ReadAllText(usersFile);
+                users = JsonSerializer.Deserialize<List<User>>(content);
+            }
         }
 
         public User ValidateUser(string username, string password)

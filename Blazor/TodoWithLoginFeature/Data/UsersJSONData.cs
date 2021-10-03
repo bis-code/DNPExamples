@@ -61,6 +61,9 @@ namespace TodoWithLoginFeature.Data
         {
             int max = users.Max(user => user.UserID);
             user.UserID = (++max);
+            user.Todos = new List<Todo>();
+            user.Role = "Member";
+            user.SecurityLevel = 0;
             users.Add(user);
             WriteUsersToFile();
         }

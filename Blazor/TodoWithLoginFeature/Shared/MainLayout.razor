@@ -1,5 +1,8 @@
+@using TodoWithLoginFeature.Authentication.Impl
 @inherits LayoutComponentBase
 
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
 <div class="page">
     <div class="sidebar">
         <NavMenu/>
@@ -7,6 +10,13 @@
 
     <div class="main">
         <div class="top-row px-4">
+            <AuthorizeView>
+                <Authorized>
+                    <a href="" @onclick="PerformLogout">
+                        Log out
+                    </a>
+                </Authorized>
+            </AuthorizeView>
             <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
         </div>
 
@@ -15,3 +25,34 @@
         </div>
     </div>
 </div>
+
+@code
+{
+    private string username;
+    private string password;
+    private string errorMessage = "";
+
+    [CascadingParameter]
+    protected Task<AuthenticationStateProvider> AuthStat { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+    }
+
+    public async Task PerformLogout()
+    {
+        errorMessage = "";
+        username = "";
+        password = "";
+
+        try
+        {
+            ((CustomeAuthenticationStateProvider) AuthenticationStateProvider).Logout();
+            NavigationManager.NavigateTo("/");
+        }
+        catch (Exception e)
+        {
+        }
+    }
+}

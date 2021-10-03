@@ -2,7 +2,7 @@
 @using TodoWithLoginFeature.Data
 @using TodoWithLoginFeature.Models
 @using Microsoft.AspNetCore.Components
-@inject TodoJSONData TodosData
+@inject ITodosData TodosData
 @inject NavigationManager NavigationManager
 <h3>Edit todo with id: @Id</h3>
 
@@ -17,7 +17,7 @@ else
         <ValidationSummary/>
         <div class="form-group">
             User id: <br/>
-            <InputNumber @bind-Value="toDoToEdit.Title"/>
+            <InputNumber @bind-Value="toDoToEdit.UserId"/>
         </div>
         <div class="form-group">
             Title: <br/>
@@ -28,20 +28,24 @@ else
         </p>
     </EditForm>
 }
+
 @code {
     [Parameter]
     public int Id { get; set; }
-
+    
     private Todo toDoToEdit;
-
+    
+    
     protected override async Task OnInitializedAsync()
     {
         toDoToEdit = TodosData.Get(Id);
     }
-
+    
     private void Save()
     {
         TodosData.Update(toDoToEdit);
         NavigationManager.NavigateTo("/Todos");
     }
 }
+
+

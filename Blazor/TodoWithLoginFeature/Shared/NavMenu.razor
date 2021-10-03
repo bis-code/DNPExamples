@@ -1,5 +1,5 @@
 ﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">TodoWithLoginFeature</a>
+    <a class="navbar-brand" href="">TodoTutorial</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,6 +12,27 @@
                 <span class="oi oi-home" aria-hidden="true"></span> Home
             </NavLink>
         </li>
+        <AuthorizeView>
+            <Authorized>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="Todos">
+                        <span class="oi oi-list" aria-hidden="true"></span> Todos
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="AddTodo">
+                        <span class="oi oi-plus" aria-hidden="true"></span> Add Todo
+                    </NavLink>
+                </li>
+            </Authorized>
+        </AuthorizeView>
+        <AuthorizeView Policy="Administrator">
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="Admin">
+                    <span class="oi oi-lock-locked" aria-hidden="true"></span> Admin
+                </NavLink>
+            </li>
+        </AuthorizeView>
     </ul>
 </div>
 
