@@ -1,34 +1,57 @@
 ﻿@page "/AddTodo"
 @using TodoWithLoginFeature.Data
 @using TodoWithLoginFeature.Models
+@using System.Reflection.Metadata.Ecma335
 
 @inject ITodosData TodosData
 @inject NavigationManager NavigationManager
 
-<h3>AddTodo</h3>
-
-<EditForm Model="@newTodoItem" OnValidSubmit="@AddNewTodo">
-    <DataAnnotationsValidator/>
-    <ValidationSummary/>
-    <div class="form-group">
-        User Id: <br/>
-        <InputNumber @bind-Value="newTodoItem.UserId"/>
-    </div>
-    <div class="form-group">
-        Title: <br/>
-        <InputTextArea rows="4" @bind-Value="newTodoItem.Title"/>
-    </div>
-    <p class="actions">
-        <button class="btn btn-outline-dark" type="submit">Create</button>
-    </p>
-</EditForm>
+<center>
+    <h3>AddTodo</h3>
+    
+    <EditForm Model="@newTodoItem" OnValidSubmit="@AddNewTodo">
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+        <div class="form-group">
+            User Id: <br/>
+            <InputNumber x-placement="1" @bind-Value="newTodoItem.UserId"/>
+        </div>
+        <div class="form-group">
+            Title: <br/>
+            <InputTextArea rows="4" @bind-Value="newTodoItem.Title"/>
+        </div>
+        <p class="actions">
+            @if (ExistUserID())
+            {
+                <button class="btn btn-outline-dark" type="submit">Create</button>
+            }
+            else
+            {
+                <button class="btn btn-outline-dark" disabled="disabled">Create</button>
+                <em style="color:red">There is no user with this ID...</em>
+            }
+            </p>
+    </EditForm>
+</center>
 
 @code {
-    private Todo newTodoItem = new Todo();
+    private Todo newTodoItem = new Todo() {UserId = 1};
 
     private void AddNewTodo()
     {
         TodosData.AddTodo(newTodoItem);
         NavigationManager.NavigateTo("/Todos");
+    }
+
+    private bool ExistUserID()
+    {
+        foreach (var item in UsersJSONData.Instance().GetUsers())
+        {
+            if (item.UserID == newTodoItem.UserId)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -12,14 +12,12 @@
         <div class="top-row px-4">
             <AuthorizeView>
                 <Authorized>
-                    <a href="" @onclick="PerformLogout">
-                        Log out
+                    <a>
+                        <button @onclick="PerformLogout" class="btn1 align-content-sm-end">Log out</button>
                     </a>
                 </Authorized>
             </AuthorizeView>
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
         </div>
-
         <div class="content px-4">
             @Body
         </div>

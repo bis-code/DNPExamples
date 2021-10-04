@@ -11,7 +11,7 @@ namespace TodoWithLoginFeature.Data
         private IList<User> users;
         private string usersFile = "users.json";
 
-        // private static UsersJSONData instance;
+        private static UsersJSONData instance;
 
         public UsersJSONData()
         {
@@ -93,9 +93,9 @@ namespace TodoWithLoginFeature.Data
             return users.FirstOrDefault(u => u.UserID == userID);
         }
 
-        public void AddTodoToUser(int userID, Todo todo)
+        public void AddTodoToUser(Todo todo)
         {
-            User toUpdate = users.First(u => u.UserID == userID);
+            User toUpdate = users.First(u => u.UserID == todo.UserId);
             toUpdate.addTodo(todo);
             WriteUsersToFile();
         }
@@ -103,6 +103,16 @@ namespace TodoWithLoginFeature.Data
         {
             string userAsJson = JsonSerializer.Serialize(users);
             File.WriteAllText(usersFile, userAsJson);
+        }
+
+        public static UsersJSONData Instance()
+        {
+            if (instance == null)
+            {
+                instance = new UsersJSONData();
+            }
+
+            return instance;
         }
     }
 }

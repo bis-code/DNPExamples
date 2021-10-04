@@ -1,0 +1,44 @@
+﻿@page "/UsersTodos/UserId:int"
+@using TodoWithLoginFeature.Models
+@using TodoWithLoginFeature.Data
+@if (todosFromUser == null)
+        {
+            <p>
+                <em>Loading...</em>
+            </p>
+        }
+    else if(!todosFromUser.Any())
+    {
+        <p>
+            <em>This user does not have any todos yet.</em>
+        </p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Todo ID</th>
+                <th>Todo ID</th>
+                <th>Title</th>
+                <th>Completed?</th>
+                <th>Remove</th>
+                <th>Edit</th>
+            </tr>
+            </thead>
+            <!-- To add functionality like in Todos.razor -->
+        </table>
+    }
+@code {
+    [Parameter] public int UserId { get; set; }
+    private IList<Todo> todosFromUser;
+    private IList<Todo> allTodosFromUser;
+
+    protected override async Task OnInitializedAsync()
+    {
+        allTodosFromUser = UsersJSONData.Instance().Get(UserId).Todos;
+        todosFromUser = allTodosFromUser;
+    }
+    
+    
+}

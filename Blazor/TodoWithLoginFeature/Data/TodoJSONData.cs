@@ -12,6 +12,8 @@ namespace TodoWithLoginFeature.Data
         private IList<Todo> todos;
         private UsersJSONData UsersData;
 
+        private static TodoJSONData instance;
+
         public TodoJSONData()
         {
             if (!File.Exists(todoFile))
@@ -103,6 +105,7 @@ namespace TodoWithLoginFeature.Data
             /* when you create another todos, todoId will get an unique ID */
             int max = todos.Max(todo => todo.TodoId);
             todo.TodoId = (++max);
+            UsersJSONData.Instance().AddTodoToUser(todo);
             LogsJSONData.Instance().AddLog(new Log() {LogMessage = "Todo added: " + todo.Title});
             todos.Add(todo);
             
@@ -137,6 +140,16 @@ namespace TodoWithLoginFeature.Data
         {
             string todoAsJson = JsonSerializer.Serialize(todos);
             File.WriteAllText(todoFile, todoAsJson);
+        }
+
+        public static TodoJSONData Instance()
+        {
+            if (instance == null)
+            {
+                instance = new TodoJSONData();
+            }
+
+            return instance;
         }
     }
 }

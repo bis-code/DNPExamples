@@ -3,12 +3,77 @@
 @using TodoWithLoginFeature.Data
 @using TodoWithLoginFeature.Models
 @inject IUsersData usersData
+@inject NavigationManager NavigationManager
 <h3>Users</h3>
-
+<br/>
+<br/>
 @if (users == null)
 {
-    
+    <p>
+        <em>Loading...</em>
+    </p>
 }
+else if (!users.Any())
+{
+    <p>
+        <em>
+            No Users exist. Try again later.
+        </em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Birthyear</th>
+            <th>City</th>
+            <th>Todos</th>
+            <th>Edit</th>
+            <th>Edit todos</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        @foreach (var item in users)
+        {
+            <tr>
+                <td>@item.UserID</td>
+                <td>@item.Username</td>
+                <td>
+                    @if (item.Role.Equals("Admin"))
+                    {
+                        @item.Role
+                        @item.SecurityLevel
+                    }
+                    else
+                    {
+                        @item.Role
+                    }
+                </td>
+                <td>@item.Birthday</td>
+                <td>@item.City</td>
+                <td>@item.Todos.Count</td>
+                <td>
+                    <button @onclick="(() => EditUser(item.UserID))">
+                        <i class="oi oi-person" style="color:#27e1c5"/>
+                    </button>
+                </td>
+                <td>
+                    <button @onclick="(() => EditTodos(item.UserID))">
+                        <i class="oi oi-calendar" style="color:#3840e1"/>
+                    </button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
 @code {
     private IList<User> users;
     private IList<User> allUsers;
@@ -17,6 +82,16 @@
     {
         allUsers = usersData.GetUsers();
         users = allUsers;
+    }
+
+    private void EditTodos(int UserId)
+    {
+        NavigationManager.NavigateTo($"/UsersTodos/{UserId}");
+    }
+
+    private void EditUser(int UserId)
+    {
+        NavigationManager.NavigateTo($"/EditUser/{UserId}");
     }
 
 }

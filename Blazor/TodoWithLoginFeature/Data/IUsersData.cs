@@ -7,7 +7,7 @@ namespace TodoWithLoginFeature.Data
     {
         IList<User> GetUsers();
         void AddUser(User user);
-        void AddTodoToUser(int userID, Todo todo);
+        void AddTodoToUser(Todo todo);
         void RemoveUser(int userID);
         void Update(User user);
         User Get(int userID);

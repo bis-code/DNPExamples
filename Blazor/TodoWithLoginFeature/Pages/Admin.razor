@@ -2,28 +2,31 @@
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
 
-<section class="form my-5 mx-5">
-    <AuthorizeView>
-        <h3>Hello @context.User.Identity.Name</h3>
-        
-        <h5>Your security level is @context.User.FindFirst(claim => claim.Type.Equals("Level")).Value</h5>
-    </AuthorizeView>
+<center>
     
-    <p>This piece of text is visible for level 0 and above</p>
-    <AuthorizeView Policy="SecurityLevel2">
-        <p>This piece of text is visible for level 2 and above</p>
-    </AuthorizeView>
-    
-    <AuthorizeView Policy="SecurityLevel4">
-        <p>This is visible for level 4 and above</p>
-        <div class="content">
-            <div class="col-lg-7">
-                <button type="button" class="btn btn-info" @onclick="ClickLogs">See logs</button>
-                <button type="button" class="btn btn-warning" @onclick="ClickUsers">See users</button>
+    <section class="form my-5 mx-5">
+        <AuthorizeView>
+            <h3>Hello @context.User.Identity.Name</h3>
+
+            <h5>Your security level is @context.User.FindFirst(claim => claim.Type.Equals("Level")).Value</h5>
+        </AuthorizeView>
+
+        <p>This piece of text is visible for level 0 and above</p>
+        <AuthorizeView Policy="SecurityLevel2">
+            <p>This piece of text is visible for level 2 and above</p>
+        </AuthorizeView>
+
+        <AuthorizeView Policy="SecurityLevel4">
+            <p>This is visible for level 4 and above</p>
+            <div class="content">
+                <div class="col-lg-7">
+                    <button type="button" class="btn btn-info" @onclick="ClickLogs">See logs</button>
+                    <button type="button" class="btn btn-warning" @onclick="ClickUsers">See users</button>
+                </div>
             </div>
-        </div>
-    </AuthorizeView>
-</section>
+        </AuthorizeView>
+    </section>
+</center>
 @code {
 
     private void ClickLogs()

@@ -1,1 +1,49 @@
-[{"Username":"Ionut","UserID":1,"Password":"12345","City":"Ploiesti","SecurityLevel":4,"Role":"Admin","Birthday":2001,"Todos":[]},{"Username":"Baicoianu","UserID":2,"Password":"12345","City":"Horsens","SecurityLevel":2,"Role":"Member","Birthday":2005,"Todos":[]},{"Username":"asd","UserID":3,"Password":"12345","City":"Horsens","SecurityLevel":0,"Role":"Member","Birthday":8,"Todos":[]},{"Username":"newaccount","UserID":4,"Password":"new","City":"2131","SecurityLevel":0,"Role":"Member","Birthday":231,"Todos":[]}]
+[
+  {
+    "Username": "Ionut",
+    "UserID": 1,
+    "Password": "12345",
+    "City": "Ploiesti",
+    "SecurityLevel": 4,
+    "Role": "Admin",
+    "Birthday": 2001,
+    "Todos": [
+      {
+        "UserId": 1,
+        "TodoId": 13,
+        "Title": "Facem mancare",
+        "IsCompleted": false
+      }
+    ]
+  },
+  {
+    "Username": "Baicoianu",
+    "UserID": 2,
+    "Password": "12345",
+    "City": "Horsens",
+    "SecurityLevel": 2,
+    "Role": "Admin",
+    "Birthday": 2005,
+    "Todos": []
+  },
+  {
+    "Username": "asd",
+    "UserID": 3,
+    "Password": "12345",
+    "City": "Horsens",
+    "SecurityLevel": 0,
+    "Role": "Member",
+    "Birthday": 8,
+    "Todos": []
+  },
+  {
+    "Username": "newaccount",
+    "UserID": 4,
+    "Password": "new",
+    "City": "2131",
+    "SecurityLevel": 0,
+    "Role": "Member",
+    "Birthday": 231,
+    "Todos": []
+  }
+]
