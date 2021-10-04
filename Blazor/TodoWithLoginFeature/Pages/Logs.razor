@@ -1,0 +1,49 @@
+﻿@page "/Logs"
+@using TodoWithLoginFeature.Data
+@using TodoWithLoginFeature.Models
+@inject ILogsData LogsData
+
+@if (logs == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else if (!logs.Any())
+{
+    <p>
+        <em>No log items exist. Please try again later.</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Text</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var log in logs)
+        {
+            <tr>
+                <td>@log.Id</td>
+                <td>@log.LogMessage</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IList<Log> logs;
+    private IList<Log> allLogs;
+
+    protected override async Task OnInitializedAsync()
+    {
+        allLogs = LogsData.GetLogs();
+        logs = allLogs;
+    }
+
+}

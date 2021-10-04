@@ -18,5 +18,15 @@
     "Role": "Member",
     "Birthday": 2005,
     "Todos": []
+  },
+  {
+    "Username": "asd",
+    "UserID": 3,
+    "Password": "12345",
+    "City": "Horsens",
+    "SecurityLevel": 0,
+    "Role": "Member",
+    "Birthday": 8,
+    "Todos": []
   }
 ]

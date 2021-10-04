@@ -1,11 +1,14 @@
 ﻿@page "/Todos"
 <!--- Import statements, like normal c# --->
 @using System.Collections
+@using System.IO
 @using Microsoft.AspNetCore.Mvc.Filters
 @using TodoWithLoginFeature.Data
 @using TodoWithLoginFeature.Models
 @inject ITodosData TodoData
-@inject NavigationManager NavigationManager;
+@inject IUsersData UsersData
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
 <!---Dependency injection, like adding a new class
 to other class in java--->
 <h1>Todo list</h1>
@@ -14,14 +17,15 @@ to other class in java--->
             Filter by User Id: <input type="number" @oninput="@((arg) => FilterByUserId(arg))" style="width: 50px"/>
         </p>
 
-        <p>
-            Filter by completed status:
-            <select class="form-control selectpicker" @onchange="@((arg) => FilterByCompletedStatus(arg))" style="width: 100px">
-                <option>Both</option>
-                <option>False</option>
-                <option>True</option>
-            </select>
-        </p>
+<p>
+    Filter by completed status:
+    <select class="form-control selectpicker" @onchange="@((arg) => FilterByCompletedStatus(arg))" style="width: 100px">
+        <option>Both</option>
+        <option>False</option>
+        <option>True</option>
+    </select>
+</p>
+
         <!--- Whenever this page is requested, the code will be evealuated and
         replaced with its result, thereby building the resulting html page,
         which is shown in the browser. --->
@@ -79,6 +83,8 @@ to other class in java--->
 @code {
     private IList<Todo> todos;
     private IList<Todo> allTodos;
+    private IList<User> users;
+    private IList<User> allUsers;
 
     private int? filterById;
     private bool? filterByIsCompleted;
@@ -96,7 +102,6 @@ to other class in java--->
         allTodos.Remove(toDoToRemove);
         todos.Remove(toDoToRemove);
     }
-
     private void CompletedChange(ChangeEventArgs evt, Todo todo)
     {
         todo.IsCompleted = (bool) evt.Value;
@@ -121,7 +126,7 @@ to other class in java--->
         {
             todos = allTodos;
         }
-        ExecuteFilter();
+        ExecuteFilterTodo();
     }
 
     private void FilterByCompletedStatus(ChangeEventArgs changeEventArgs)
@@ -134,15 +139,14 @@ to other class in java--->
         catch (Exception e)
         {
         }
-        ExecuteFilter();
+        ExecuteFilterTodo();
     }
 
     private void Edit(int id)
     {
         NavigationManager.NavigateTo($"Edit/{id}");
     }
-
-    private void ExecuteFilter()
+    private void ExecuteFilterTodo()
     {
         todos = allTodos.Where(t => (filterById != null && t.UserId == filterById
                                      || filterById == null) && (filterByIsCompleted != null && t.IsCompleted == filterByIsCompleted

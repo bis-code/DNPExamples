@@ -35,9 +35,11 @@ namespace TodoWithLoginFeature
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<ITodosData, TodoJSONData>();
+            services.AddSingleton<IUsersData, UsersJSONData>();
+            services.AddSingleton<ILogsData, LogsJSONData>();
             services.AddScoped<IUserService, InMemoryUserService>();
             services.AddScoped<AuthenticationStateProvider, CustomeAuthenticationStateProvider>();
-            services.AddSingleton<IUsersData, UsersJSONData>();
+            
 
             services.AddAuthorization(options =>
             {

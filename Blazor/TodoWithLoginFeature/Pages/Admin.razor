@@ -1,5 +1,6 @@
 ﻿@page "/Admin"
 @inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
 
 <AuthorizeView>
     <h3>Hello @context.User.Identity.Name</h3>
@@ -14,7 +15,12 @@
 
 <AuthorizeView Policy="SecurityLevel4">
     <p>This is visible for level 4 and above</p>
+    <button type="button" @onclick="ClickLogs">See logs</button>
 </AuthorizeView>
 @code {
-    
+
+    private void ClickLogs()
+    {
+        NavigationManager.NavigateTo("/Logs");
+    }
 }

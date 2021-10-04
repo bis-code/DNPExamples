@@ -63,7 +63,7 @@ namespace TodoWithLoginFeature.Data
             user.UserID = (++max);
             user.Todos = new List<Todo>();
             user.Role = "Member";
-            user.SecurityLevel = 0;
+            user. SecurityLevel = 0;
             users.Add(user);
             WriteUsersToFile();
         }
