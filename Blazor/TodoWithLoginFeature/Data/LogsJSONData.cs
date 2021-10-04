@@ -20,6 +20,14 @@ namespace TodoWithLoginFeature.Data
         {
             if (!File.Exists(logsFile))
             {
+                logs = new Log[]
+                {
+                    new Log()
+                    {
+                        Id = 0,
+                        LogMessage = "asd"
+                    }
+                };
                 WriteLogsToFile();
             }
             else

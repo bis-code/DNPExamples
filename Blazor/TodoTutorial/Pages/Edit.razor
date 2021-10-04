@@ -27,7 +27,9 @@ else
         </p>
     </EditForm>
 }
+
 @code {
+
     [Parameter]
     public int Id { get; set; }
 
@@ -43,4 +45,6 @@ else
         TodosData.Update(toDoToEdit);
         NavigationManager.NavigateTo("/Todos");
     }
+
 }
+

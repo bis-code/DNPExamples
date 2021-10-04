@@ -1,0 +1,30 @@
+[
+  {
+    "LogMessage": "asd",
+    "Id": 0
+  },
+  {
+    "LogMessage": "Todo ID:3, with Do DNP homework removed",
+    "Id": 1
+  },
+  {
+    "LogMessage": "Todo ID:4, with Eat breakfast removed",
+    "Id": 2
+  },
+  {
+    "LogMessage": "Todo ID:5, with Mow lawn removed",
+    "Id": 3
+  },
+  {
+    "LogMessage": "Todo ID:6, with Do games removed",
+    "Id": 4
+  },
+  {
+    "LogMessage": "Todo ID:7, with Play with cat removed",
+    "Id": 5
+  },
+  {
+    "LogMessage": "Todo added: Salut",
+    "Id": 6
+  }
+]

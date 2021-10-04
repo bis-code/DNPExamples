@@ -106,13 +106,16 @@ namespace TodoWithLoginFeature.Data
             WriteTodosToFile();
             /*Adding a todos to the todos list. Saving the entire
              list to the file*/
+            LogsJSONData.Instance().AddLog(new Log() {LogMessage = "Todo added: " + todo.Title});
         }
 
         public void RemoveTodo(int todoId)
         {
             Todo toRemove = todos.First(t => t.TodoId == todoId);
+            LogsJSONData.Instance().AddLog(new Log() {LogMessage = $"Todo ID:{toRemove.TodoId}, with {toRemove.Title} removed"});
             todos.Remove(toRemove);
             WriteTodosToFile();
+            
         }
 
         public void Update(Todo todo)
