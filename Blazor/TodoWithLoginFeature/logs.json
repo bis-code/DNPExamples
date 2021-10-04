@@ -26,5 +26,29 @@
   {
     "LogMessage": "Todo added: Salut",
     "Id": 6
+  },
+  {
+    "LogMessage": "Todo added: Salut",
+    "Id": 7
+  },
+  {
+    "LogMessage": "Todo added: 23",
+    "Id": 8
+  },
+  {
+    "LogMessage": "Todo ID:8, with Love iubita removed",
+    "Id": 9
+  },
+  {
+    "LogMessage": "Todo ID:9, with Salut removed",
+    "Id": 10
+  },
+  {
+    "LogMessage": "Todo ID:10, with Salut removed",
+    "Id": 11
+  },
+  {
+    "LogMessage": "Todo added: 21314",
+    "Id": 12
   }
 ]

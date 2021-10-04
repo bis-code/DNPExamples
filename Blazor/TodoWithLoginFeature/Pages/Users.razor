@@ -1,0 +1,22 @@
+﻿@page "/Users"
+@using TodoWithLoginFeature.Authentication
+@using TodoWithLoginFeature.Data
+@using TodoWithLoginFeature.Models
+@inject IUsersData usersData
+<h3>Users</h3>
+
+@if (users == null)
+{
+    
+}
+@code {
+    private IList<User> users;
+    private IList<User> allUsers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        allUsers = usersData.GetUsers();
+        users = allUsers;
+    }
+
+}

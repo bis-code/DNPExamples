@@ -10,6 +10,7 @@ namespace TodoWithLoginFeature.Data
     {
         private string todoFile = "todos.json";
         private IList<Todo> todos;
+        private UsersJSONData UsersData;
 
         public TodoJSONData()
         {
@@ -102,11 +103,12 @@ namespace TodoWithLoginFeature.Data
             /* when you create another todos, todoId will get an unique ID */
             int max = todos.Max(todo => todo.TodoId);
             todo.TodoId = (++max);
+            LogsJSONData.Instance().AddLog(new Log() {LogMessage = "Todo added: " + todo.Title});
             todos.Add(todo);
+            
             WriteTodosToFile();
             /*Adding a todos to the todos list. Saving the entire
              list to the file*/
-            LogsJSONData.Instance().AddLog(new Log() {LogMessage = "Todo added: " + todo.Title});
         }
 
         public void RemoveTodo(int todoId)

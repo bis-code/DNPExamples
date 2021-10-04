@@ -11,6 +11,8 @@ namespace TodoWithLoginFeature.Data
         private IList<User> users;
         private string usersFile = "users.json";
 
+        // private static UsersJSONData instance;
+
         public UsersJSONData()
         {
             if (!File.Exists(usersFile))

@@ -13,8 +13,7 @@ namespace TodoWithLoginFeature.Data
         private string logsFile = "logs.json";
 
         private static LogsJSONData instance;
-        private static readonly object lockObj = new object();
-        
+
 
         public LogsJSONData()
         {
@@ -27,7 +26,7 @@ namespace TodoWithLoginFeature.Data
                         Id = 0,
                         LogMessage = "asd"
                     }
-                };
+                }.ToList();
                 WriteLogsToFile();
             }
             else
@@ -60,12 +59,9 @@ namespace TodoWithLoginFeature.Data
         public static LogsJSONData Instance()
         {
             if (instance == null)
-                {
-                    lock (lockObj)
-                    {
-                        instance = new LogsJSONData();
-                    }
-                }
+            {
+                instance = new LogsJSONData();
+            }
             return instance;
         }
     }
