@@ -13,6 +13,18 @@
         "TodoId": 13,
         "Title": "Facem mancare",
         "IsCompleted": false
+      },
+      {
+        "UserId": 1,
+        "TodoId": 14,
+        "Title": "sada",
+        "IsCompleted": false
+      },
+      {
+        "UserId": 1,
+        "TodoId": 16,
+        "Title": "123",
+        "IsCompleted": false
       }
     ]
   },
@@ -24,7 +36,20 @@
     "SecurityLevel": 2,
     "Role": "Admin",
     "Birthday": 2005,
-    "Todos": []
+    "Todos": [
+      {
+        "UserId": 2,
+        "TodoId": 14,
+        "Title": "Asd",
+        "IsCompleted": false
+      },
+      {
+        "UserId": 2,
+        "TodoId": 15,
+        "Title": "2",
+        "IsCompleted": false
+      }
+    ]
   },
   {
     "Username": "asd",
@@ -44,6 +69,16 @@
     "SecurityLevel": 0,
     "Role": "Member",
     "Birthday": 231,
+    "Todos": []
+  },
+  {
+    "Username": "Ionutel",
+    "UserID": 5,
+    "Password": "12345",
+    "City": "Horsens",
+    "SecurityLevel": 4,
+    "Role": "Admin",
+    "Birthday": 1990,
     "Todos": []
   }
 ]

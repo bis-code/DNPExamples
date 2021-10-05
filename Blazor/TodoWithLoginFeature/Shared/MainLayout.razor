@@ -1,8 +1,13 @@
 @using TodoWithLoginFeature.Authentication.Impl
+@using System.Security.Cryptography
+@using Microsoft.AspNetCore.Identity
+@using TodoWithLoginFeature.Data
+@using TodoWithLoginFeature.Pages
 @inherits LayoutComponentBase
 
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
+@inject IUsersData UsersData
 <div class="page">
     <div class="sidebar">
         <NavMenu/>
@@ -14,6 +19,9 @@
                 <Authorized>
                     <a>
                         <button @onclick="PerformLogout" class="btn1 align-content-sm-end">Log out</button>
+                    </a>
+                    <a>
+                         <button @onclick="Profile" class="btn-info align-content-sm-end">Profile</button>
                     </a>
                 </Authorized>
             </AuthorizeView>
@@ -51,6 +59,18 @@
         }
         catch (Exception e)
         {
+        }
+    }
+
+    public async Task Profile()
+    {
+        try
+        {
+            NavigationManager.NavigateTo($"/Profile/{username}");
+        }
+        catch (Exception e)
+        {
+            
         }
     }
 }

@@ -1,13 +1,11 @@
 ﻿body {
-    background: rgb(186, 231, 231);
+    
 }
 .row {
-    background: #27e1c5;
     border-radius: 30px;
 }
 img {
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
+    border-radius: 30px;
 }
 .btn1 {
     border: none;

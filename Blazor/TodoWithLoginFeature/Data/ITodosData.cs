@@ -10,5 +10,6 @@ namespace TodoWithLoginFeature.Data
         void RemoveTodo(int todoId);
         void Update(Todo todo);
         Todo Get(int id);
+        IList<Todo> GetTodosForUser(int userId);
     }
 }

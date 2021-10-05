@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using Microsoft.AspNetCore.Identity;
 using TodoWithLoginFeature.Models;
 
 namespace TodoWithLoginFeature.Data
@@ -10,9 +11,8 @@ namespace TodoWithLoginFeature.Data
     {
         private string todoFile = "todos.json";
         private IList<Todo> todos;
-        private UsersJSONData UsersData;
-
-        private static TodoJSONData instance;
+        private UsersJSONData UsersData = new UsersJSONData();
+        private LogsJSONData LogsJsonData = new LogsJSONData();
 
         public TodoJSONData()
         {
@@ -105,8 +105,8 @@ namespace TodoWithLoginFeature.Data
             /* when you create another todos, todoId will get an unique ID */
             int max = todos.Max(todo => todo.TodoId);
             todo.TodoId = (++max);
-            UsersJSONData.Instance().AddTodoToUser(todo);
-            LogsJSONData.Instance().AddLog(new Log() {LogMessage = "Todo added: " + todo.Title});
+            UsersData.AddTodoToUser(todo);
+            LogsJsonData.AddLog(new Log() {LogMessage = "Todo added: " + todo.Title});
             todos.Add(todo);
             
             WriteTodosToFile();
@@ -117,7 +117,7 @@ namespace TodoWithLoginFeature.Data
         public void RemoveTodo(int todoId)
         {
             Todo toRemove = todos.First(t => t.TodoId == todoId);
-            LogsJSONData.Instance().AddLog(new Log() {LogMessage = $"Todo ID:{toRemove.TodoId}, with {toRemove.Title} removed"});
+            LogsJsonData.AddLog(new Log() {LogMessage = $"Todo ID:{toRemove.TodoId}, with {toRemove.Title} removed"});
             todos.Remove(toRemove);
             WriteTodosToFile();
             
@@ -131,6 +131,12 @@ namespace TodoWithLoginFeature.Data
             WriteTodosToFile();
         }
 
+        public IList<Todo> GetTodosForUser(int userId)
+        {
+            List<Todo> todosForUser = new List<Todo>(todos);
+            return (IList<Todo>) todosForUser.Where(t => t.UserId == userId);
+        }
+        
         public Todo Get(int id)
         {
             return todos.FirstOrDefault(t => t.TodoId == id);
@@ -140,16 +146,6 @@ namespace TodoWithLoginFeature.Data
         {
             string todoAsJson = JsonSerializer.Serialize(todos);
             File.WriteAllText(todoFile, todoAsJson);
-        }
-
-        public static TodoJSONData Instance()
-        {
-            if (instance == null)
-            {
-                instance = new TodoJSONData();
-            }
-
-            return instance;
         }
     }
 }

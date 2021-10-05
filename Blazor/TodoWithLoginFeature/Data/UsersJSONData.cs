@@ -99,6 +99,7 @@ namespace TodoWithLoginFeature.Data
             toUpdate.addTodo(todo);
             WriteUsersToFile();
         }
+        
         private void WriteUsersToFile()
         {
             string userAsJson = JsonSerializer.Serialize(users);

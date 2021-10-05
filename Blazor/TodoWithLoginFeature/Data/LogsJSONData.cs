@@ -47,6 +47,7 @@ namespace TodoWithLoginFeature.Data
             int max = logs.Max(log => log.Id);
             log.Id = (++max);
             logs.Add(log);
+            
             WriteLogsToFile();
         }
 
