@@ -95,13 +95,14 @@ to other class in java--->
         todos = allTodos;
     }
 
-    private void RemoveTodo(int todoId)
+    private async Task RemoveTodo(int todoId)
     {
         Todo toDoToRemove = todos.First(t => t.TodoId == todoId);
         TodoData.RemoveTodo(todoId);
         allTodos.Remove(toDoToRemove);
         todos.Remove(toDoToRemove);
     }
+    
     private void CompletedChange(ChangeEventArgs evt, Todo todo)
     {
         todo.IsCompleted = (bool) evt.Value;

@@ -1,0 +1,60 @@
+﻿@page "/Register"
+@using TodoClientWithREST.Data
+@using TodoClientWithREST.Models
+@using Microsoft.AspNetCore.Identity
+
+@inject NavigationManager NavigationManager
+@inject IUsersService usersService
+
+<section class="Form my-5 mx-5 ">
+             <div class="container">
+                 <div class="row no-gutters">
+                     <div class="col-lg-5">
+                         <img src="Images/todolist.jpg" class="img-fluid" alt="todolist image"/>
+                     </div>
+                     <div class="col-lg-7 px-5 pt-5">
+                         <h1 class="font-weight-bold py-3">Login</h1>
+                         <h4>Sign into your account</h4>
+                         <form>
+                             <div class="form-row">
+                                 <div class="col-lg-7">
+                                     <input type="text" placeholder="user name" @bind-value="newUserItem.Username" class="form-control my-3 p-4"/>
+                                 </div>
+                             </div>
+                             <div class="form-row">
+                                 <div class="col-lg-7">
+                                     <input type="password" placeholder="password" @bind-value="newUserItem.Password" class="form-control my-3 p-4"/>
+                                 </div>
+                             </div>
+                             <div class="form-row">
+                                 <div class="col-lg-7">
+                                     <input type="number" placeholder="birthyear" @bind-value="newUserItem.Birthday" class="form-control my-3 p-4"/>
+                                 </div>
+                             </div>
+                             <div class="form-row">
+                                 <div class="col-lg-7">
+                                     <input type="" placeholder="text" @bind-value="newUserItem.City" class="form-control my-3 p-4"/>
+                                 </div>
+                             </div>
+                             
+                             <div class="form-row">
+                                 <div class="col-lg-7">
+                                     <button type="button" class="btn1 mt-3 mb-5" @onclick="AddNewUser">Login</button>
+                                 </div>
+                             </div>
+                             <p>Don't have an account? <a href="/Register">Register here</a></p>
+                         </form>
+                     </div>
+                 </div>
+             </div>
+         </section>
+
+@code {
+    private User newUserItem = new User();
+
+    private void AddNewUser()
+    {
+        usersService.AddUserAsync(newUserItem);
+        NavigationManager.NavigateTo("/");
+    }
+}

@@ -1,0 +1,84 @@
+﻿@page "/login"
+@namespace LoginComponent
+@using TodoClientWithREST.Authentication.Impl
+
+@inject NavigationManager NavigationManager;
+@inject AuthenticationStateProvider AuthenticationStateProvider;
+
+
+<AuthorizeView>
+    <NotAuthorized>
+        <section class="Form my-5 mx-5 ">
+            <div class="container">
+                <div class="row no-gutters">
+                    <div class="col-lg-5">
+                        <img src="Images/todolist.jpg" class="img-fluid" alt="todolist image"/>
+                    </div>
+                    <div class="col-lg-7 px-5 pt-5">
+                        <h1 class="font-weight-bold py-3">Login</h1>
+                        <h4>Sign into your account</h4>
+                        <form>
+                            <div class="form-row">
+                                <div class="col-lg-7">
+                                    <input type="text" placeholder="user name" @bind-value="username" class="form-control my-3 p-4"/>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-lg-7">
+                                    <input type="password" placeholder="password" @bind-value="password" class="form-control my-3 p-4"/>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-lg-7">
+                                    <button type="button" class="btn1 mt-3 mb-5" @onclick="PerformLogin">Login</button>
+                                </div>
+                            </div>
+                            <div style="color:red"> @errorMessage</div>
+                            <p>Don't have an account? <a href="/Register">Register here</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private string username;
+    private string password;
+    private string errorMessage;
+
+    public async Task PerformLogin()
+    {
+        errorMessage = "";
+
+        try
+        {
+            ((CustomeAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(username, password);
+            username = "";
+            password = "";
+            NavigationManager.NavigateTo("/");
+        }
+        catch (Exception e)
+        {
+            errorMessage = e.Message;
+        }
+    }
+
+    public async Task PerformLogout()
+    {
+        errorMessage = "";
+        username = "";
+        password = "";
+
+        try
+        {
+            ((CustomeAuthenticationStateProvider) AuthenticationStateProvider).Logout();
+            NavigationManager.NavigateTo("/");
+        }
+        catch (Exception e)
+        {
+        }
+    }
+
+}

@@ -1,6 +1,6 @@
 ﻿@page "/Edit/{Id:int}"
-@using TodoTutorial.Models
-@using TodoTutorial.Data
+@using TodoClient.Models
+@using TodoClient.Data
 @inject ITodosData TodosData
 @inject NavigationManager NavigationManager
 <h3>Edit todo with id: @Id</h3>
@@ -16,7 +16,7 @@ else
         <ValidationSummary/>
         <div class="form-group">
             User id: <br/>
-            <InputNumber @bind-Value="toDoToEdit.Title"/>
+            <InputNumber @bind-Value="toDoToEdit.UserId"/>
         </div>
         <div class="form-group">
             Title: <br/>

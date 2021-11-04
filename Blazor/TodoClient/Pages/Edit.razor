@@ -1,0 +1,46 @@
+﻿@page "/Edit/{Id:int}"
+@using TodoClient.Models
+@using TodoClient.Data
+@inject ITodosService _todosService
+@inject NavigationManager NavigationManager
+<h3>Edit todo with id: @Id</h3>
+
+@if (toDoToEdit == null)
+{
+    <em>Todo not found!</em>
+}
+else
+{
+    <EditForm Model="@toDoToEdit" OnValidSubmit="@Save">
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+        <div class="form-group">
+            User id: <br/>
+            <InputNumber @bind-Value="toDoToEdit.Title"/>
+        </div>
+        <div class="form-group">
+            Title: <br/>
+            <InputTextArea rows="4" @bind-Value="toDoToEdit.Title"/>
+        </div>
+        <p class="actions">
+            <button class="btn btn-outline-dark" type="submit">Save</button>
+        </p>
+    </EditForm>
+}
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private Todo toDoToEdit;
+
+    protected override async Task OnInitializedAsync()
+    {
+        toDoToEdit = await _todosService.GetTodoAsync(Id);
+    }
+
+    private void Save()
+    {
+        _todosService.UpdateAsync(toDoToEdit);
+        NavigationManager.NavigateTo("/Todos");
+    }
+}

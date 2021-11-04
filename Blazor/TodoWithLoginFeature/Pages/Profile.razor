@@ -1,0 +1,26 @@
+﻿@page "/Profile/{username}"
+@using TodoWithLoginFeature.Models
+@using TodoWithLoginFeature.Data
+
+@inject IUsersData UsersData
+<h3>Profile, @username</h3>
+
+<div class="container">
+    <div class="col-lg-4">
+        Name: @_user.Username
+    </div>
+    <div class="col-lg-4">
+        
+    </div>
+</div>
+
+@code {
+    [Parameter] public string username { get; set; }
+    private User _user;
+
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        _user = UsersData.GetUsers().First(u => u.Username.Equals(username));
+    }
+}

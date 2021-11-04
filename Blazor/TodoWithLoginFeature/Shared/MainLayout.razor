@@ -8,29 +8,38 @@
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
 @inject IUsersData UsersData
-<div class="page">
-    <div class="sidebar">
-        <NavMenu/>
-    </div>
+<AuthorizeView>
+    <Authorized>
+        <div class="page">
+            <div class="sidebar">
+                <NavMenu/>
+            </div>
+            <div class="main">
+                <div class="top-row px-4">
 
-    <div class="main">
-        <div class="top-row px-4">
-            <AuthorizeView>
-                <Authorized>
+
                     <a>
                         <button @onclick="PerformLogout" class="btn1 align-content-sm-end">Log out</button>
                     </a>
                     <a>
-                         <button @onclick="Profile" class="btn-info align-content-sm-end">Profile</button>
+                        <button @onclick="Profile" class="btn-info align-content-sm-end">Profile</button>
                     </a>
-                </Authorized>
-            </AuthorizeView>
+
+
+                </div>
+                <div class="content px-4">
+                    @Body
+                </div>
+            </div>
         </div>
+
+    </Authorized>
+    <NotAuthorized>
         <div class="content px-4">
             @Body
         </div>
-    </div>
-</div>
+    </NotAuthorized>
+</AuthorizeView>
 
 @code
 {
@@ -39,11 +48,16 @@
     private string errorMessage = "";
 
     [CascadingParameter]
-    protected Task<AuthenticationStateProvider> AuthStat { get; set; }
+    protected Task<AuthenticationState> AuthStat { get; set; }
 
     protected async override Task OnInitializedAsync()
     {
         base.OnInitialized();
+        var user = (await AuthStat).User;
+        if (user.Identity.IsAuthenticated)
+        {
+            username = user.Identity.Name;
+        }
     }
 
     public async Task PerformLogout()
@@ -70,7 +84,6 @@
         }
         catch (Exception e)
         {
-            
         }
     }
 }

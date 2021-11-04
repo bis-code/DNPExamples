@@ -1,0 +1,25 @@
+﻿body {
+    
+}
+.row {
+    border-radius: 30px;
+}
+img {
+    border-radius: 30px;
+}
+.btn1 {
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    fon-width: bold;
+}
+.btn1:hover {
+    background: white;
+    border: 1px solid;
+    color:black;
+}
+

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
-using TodoTutorial.Models;
+using TodoClient.Models;
 
-namespace TodoTutorial.Data
+namespace TodoClient.Data
 {
     public class TodoJSONData : ITodosData
     {

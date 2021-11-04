@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TodoTutorial.Models;
-using TodoTutorial.Models;
+using TodoClient.Models;
 
-namespace TodoTutorial.Data
+namespace TodoClient.Data
 {
     public interface ITodosData
     {

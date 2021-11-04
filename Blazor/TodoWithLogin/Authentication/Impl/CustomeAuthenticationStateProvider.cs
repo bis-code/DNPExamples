@@ -5,7 +5,6 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
-using TodoWithLogin.Models;
 
 namespace TodoWithLogin.Authentication.Impl
 {
